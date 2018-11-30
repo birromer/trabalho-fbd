@@ -1,133 +1,178 @@
-﻿-- kdlftgiv@sharklasers.com
+﻿-- kdlftgiv@sharklasers.com cacatua
 create table PLANO
 (
-    codplano char(5) not null primary key,
+    codplano char(15) not null primary key,
+    usuario char(15) not null unique,
     endereco varchar(50),
-    usuario char(5) not null
+    cpf integer(11) unique,
+    tipoPlano char(1) not null,
+    vinculoIE date,
+    foreign key (tipoPlano) references PRECO_PLANO
+        on update cascade,
+    foreign key(usuario) references USUARIO
+        on delete cascade
+        on update cascade
+);
+
+create table PRECO_PLANO
+(   
+    tipoPlano char(1) not null primary key,
+    preco numeric(5) not null   
+);
+
+create table ASSINATURA
+(
+    codplano char(15) not null,
+    codu char(15) not null,
+    valorFatura numeric(5) not null,
+    dataVencimento date not null
+    foreign key (codplano) references PLANO
+        on delete cascade
+        on update cascade,
+    foreign key (codu) references USUARIO
+	on delete cascade
+        on update cascade,
+    primary key(codplano, codu);
 );
 
 create table USUARIO
 (
-    codu varchar(30) not null primary key,
+    codu varchar(15) not null primary key,
     email varchar(30) not null unique,
-    nome varchar(50) not null
-    genero char (1) not null check (genero in ('f','m','n'));
+    nome varchar(50) not null,
+    genero char(1) not null check (genero in ('f','m','n'))
+    premium char(15),
+    codplano char(15),
+    foreign key (codplano) references PLANO
+        on update cascade
+        on delete set null
 );
 
 create table ARTISTA
 (
-    codart char(5) not null primary key,
+    codart char(15) not null primary key,
     nome varchar(50) not null,
-    ouvintesMensais integer not null set default 0,
+    ouvintesMensais integer not null default 0,
     artInfo varchar(500)
 );
 
 create table GENERO_ARTISTA
 (
-    codart char(5) not null,
+    codart char(15) not null,
     genero char(20) not null,
     primary key(codart, genero),
-    foreign key (codart) references ARTISTA on delete cascade,
+    foreign key (codart) references ARTISTA on delete cascade
 );
 
 create table ALBUM
 (
-    codalb char(5) not null primary key,
+    codalb char(15) not null primary key,
     anoLancamento date not null,
-    nome varchar(30) not null
-    codart char(5) not null,
+    nome varchar(30) not null,
+    codart char(15) not null,
     foreign key (codart) references ARTISTA on delete cascade 
 );
 
 create table MUSICA
 (
-    codm char(5) not null primary key,
+    codm char(15) not null primary key,
     titulo varchar(30) not null,
     nroOuvidas integer not null default 0,
     duracao char(6) not null,
     creditos varchar(100),
-    codalb char(5) not null,
-    foreign key codalb references ALBUM on delete cascade
+    codalb char(15) not null,
+    foreign key(codalb) references ALBUM on delete cascade
 );
 
 create table PLAYLIST
 (
-    codp char(5) primary key,
+    codp char(15) primary key,
     nome varchar(100) not null,
-    descricao varchar(300),    
+    
+    descricao varchar(300)    
 );
 
 create table PLAYLIST_CONTEUDO
 (
-    codm char(5) not null,
-    codp char(5) not null,
+    codm char(15) not null,
+    codp char(15) not null,
     primary key (codm, codp),
-    foreign key codm references MUSICA,
-    foreign key codp references PLAYLIST,
+    foreign key(codm) references MUSICA,
+    foreign key(codp) references PLAYLIST
 );
 
 create table BIBLIOTECA
 (
-    codm char(5) not null,
+    codm char(15) not null,
     codu varchar(30) not null,
     primary key (codm, codu),
-    foreign key codm references MUSICA on delete set null,
-    foreign key codu references USUARIO on delete cascade on update cascade,
+    foreign key(codm) references MUSICA on delete set null,
+    foreign key(codu) references USUARIO on delete cascade on update cascade
 );
-
-
-create table PODCAST
-(
-    codep char(5) not null primary key,
-    descricao varchar(100),
-    foreign key codep references EPISODIO on delete cascade
-);
-
-create table VIDEO
-(
-    codep char(5) not null primary key,
-    foreign key codep references EPISODIO on delete cascade
-);
-
-create table EPISODIO
-(
-    codep char(5) not null primary key,
-    titulo varchar(40) not null,
-    dataPostagem date not null,
-    duracao char(6) not null,
-    codprog char(5) not null,
-    foreign key codprog references PROGRAMA on delete cascade
-);
-
 
 create table PROGRAMA
 (
-    codprog char(5) not null primary key,
+    codprog char(15) not null primary key,
     nome varchar(30) not null,
     nomeDono varchar(30) not null
 );
 
+create table EPISODIO
+(
+    codep char(15) not null primary key,
+    titulo varchar(40) not null,
+    dataPostagem date not null,
+    duracao char(6) not null,
+    codprog char(15) not null,
+    foreign key(codprog) references PROGRAMA on delete cascade
+);
+
+create table PODCAST
+(
+    codep char(15) not null primary key,
+    descricao varchar(100),
+    foreign key(codep) references EPISODIO on delete cascade
+);
+
+create table VIDEO
+(
+    codep char(15) not null primary key,
+    foreign key(codep) references EPISODIO on delete cascade
+);
+
 create table CATEGORIA
 (
-    codcat char(5) primary key;
-    nome varchar(20) not null,
+    codcat char(15) primary key,
+    nome varchar(20) not null
 );
 
 create table CATEGORIA_CONTEUDO
 (
-    codcat char(5),
-    codp char(5),
+    codcat char(15),
+    codp char(15),
     primary key (codcat, codp),
-    foreign key codcat references CATEGORIA on delete cascade,
-    foreign key codp references PLAYLIST on delete cascade
+    foreign key(codcat) references CATEGORIA on delete cascade,
+    foreign key (codp) references PLAYLIST on delete cascade
 );
 
 create table CONCERTO
 (
-    codcon char(5) not null,
-    dataC data not null,
-    localC local not null,
-    codart char(5) not null,
+    codcon char(15) not null,
+    dataC date not null,
+    localC varchar(25) not null,
+    codart char(15) not null,
     primary key (codcon, codart),
     foreign key (codart) references ARTISTA on delete cascade
 );
+
+create table PARTICIPACOES
+(
+    codart char(15) not null,
+    codalb char(15) not null,
+    primary key(codart, codalb),
+    foreign key (codart) references ARTISTA
+        on delete cascade,
+    foreign key (codalb) references ALBUM
+        on delete cascade
+        on update cascade
+)
