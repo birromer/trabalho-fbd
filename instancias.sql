@@ -107,6 +107,7 @@ values("art009","indie");
 insert into GENERO_ARTISTA
 values("art0010","rock");
 
+
 insert into ALBUM
 values("alb1", 2014, "May Death Never Stop You","art001");
 insert into ALBUM
@@ -129,3 +130,81 @@ insert into ALBUM
 values("alb8",1998,"In the Aeroplane Over the Sea","art008");
 insert into ALBUM
 values("alb9",2003,"Be the Rain","art0010");
+
+
+insert into MUSICA
+values("m1","The Kids From Yesterday",10947306,326,"My Chemical Romance", "Gerard Way, Iero, Mikey Way, Toro","My Chemical Romance, Rob Cavallo", "alb1");
+insert into MUSICA
+values("m2","My Love, My Life",,231,"","alb3");
+insert into MUSICA
+values("m3","",,":","","");
+insert into MUSICA
+values("m4","",,":","","");
+insert into MUSICA
+values("m5","",,":","","");
+insert into MUSICA
+values("m6","Supermassive Black Hole",,212,"","alb5");
+insert into MUSICA
+values("m7","I Will Follow You Into The Dark",,189,"","alb7");
+insert into MUSICA
+values("m8","Expo '86",,251,"","alb11");
+insert into MUSICA
+values("m9","Someday You Will be Loved",,191,"","alb7");
+insert into MUSICA
+values("m10","",,,"","");
+insert into MUSICA
+values("m11","Holland, 1945", 16221658, 193, "Neutral Milk Hotel", "Jeff Mangum",null,"alb8");
+insert into MUSICA
+values("m12","Be the Rain",40287,250,"Neil Young", "Neil Young", "LA Johnson, Neil Young", "alb9");
+insert into MUSICA
+values("m13","",,,"","");
+
+
+insert into PLAYLIST
+values("play1","Cantando com Disney","Cante e divirta-se com as músicas da Disney.");
+insert into PLAYLIST
+values("play2","dirigindo meu carro versão musica triste do Naruto","fururu");
+insert into PLAYLIST
+values("play3","All Out 00s","Essencial tracks from the decade that catapulted eletronic music, hip hop and indie rock into the mainstream.");
+insert into PLAYLIST
+values("play4","zzz", null);
+insert into PLAYLIST
+values("play5","pro Célia poslouchat","tak neposílám tisíc oddělených alb");
+insert into PLAYLIST
+values("play6","trst","adições questionáveis");
+insert into PLAYLIST
+values("play7","peachy","no filme da minha vida devia ta tocando isso aqui");
+insert into PLAYLIST
+values("play8","MpaG","bota boa essa playlist");
+insert into PLAYLIST
+values("play9","Sincretismo", null);
+insert into PLAYLIST
+values("play10","B4D", null);
+
+
+insert into PLAYLIST_CONTEUDO
+values("m2","play2");
+insert into PLAYLIST_CONTEUDO
+values("m9","play2");
+insert into PLAYLIST_CONTEUDO
+values("m8","play2");
+insert into PLAYLIST_CONTEUDO
+values("m11","play6");
+insert into PLAYLIST_CONTEUDO
+values("m6", "play3");
+insert into PLAYLIST_CONTEUDO
+values("play4");
+insert into PLAYLIST_CONTEUDO
+values("play4");
+insert into PLAYLIST_CONTEUDO
+values("play5");
+insert into PLAYLIST_CONTEUDO
+values("play6");
+insert into PLAYLIST_CONTEUDO
+values("play7");
+insert into PLAYLIST_CONTEUDO
+values("play8");
+insert into PLAYLIST_CONTEUDO
+values("play9");
+insert into PLAYLIST_CONTEUDO
+values("play10");
