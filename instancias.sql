@@ -23,6 +23,8 @@ insert into USUARIO(codu,email,nome,genero,premium)
 insert into USUARIO(codu,email,nome,genero,premium)
     values ('casarao', 'jeijei@gmail.com', 'Joan', 'n','p');
 
+
+
 insert into PRECO_PLANO(tipoPlano,preco)
     values ('e', 8.50);
 insert into PRECO_PLANO(tipoPlano,preco)
@@ -59,10 +61,10 @@ insert into FATURA(codfat,codUsuario,dataVencimento,valorFatura)
     values('ddg3228sad', 'einstein', '2018-02-10', 16.90);
 insert into FATURA(codfat,codUsuario,dataVencimento,valorFatura)
     values('8aa27das1', 'einstein', '2018-01-10', 16.90);
-insert into FATURA(codfat,codUsuario,dataVencimento,valorFatura)
-    values('9871jnas9', 'portuga', '2018-03-22', 26.90);
-insert into FATURA(codfat,codUsuario,dataVencimento,valorFatura)
-    values('786fdkjf', 'portuga', '2018-02-22', 16.90);
+insert into FATURA(codfat,codUsuario,dataVencimento,valorFatura, faturaPaga)
+    values('9871jnas9', 'portuga', '2018-03-22', 26.90, true);
+insert into FATURA(codfat,codUsuario,dataVencimento,valorFatura, faturaPaga)
+    values('786fdkjf', 'portuga', '2018-02-22', 16.90, true);
 insert into FATURA(codfat,codUsuario,dataVencimento,valorFatura)
     values('lu2778n', 'naomemataram', '2018-02-16', 16.90);
 insert into FATURA(codfat,codUsuario,dataVencimento,valorFatura)
@@ -75,6 +77,7 @@ insert into FATURA(codfat,codUsuario,dataVencimento,valorFatura)
     values('sajk87b', 'microphones', '2018-02-10', 16.90);
 insert into FATURA(codfat,codUsuario,dataVencimento,valorFatura)
     values('asjkd87jbk', 'microphones', '2015-10-10', 26.90);
+
 
 
 insert into ARTISTA(codart,nome,ouvintesMensais,artInfo)
@@ -187,6 +190,8 @@ insert into MUSICA(codm,titulo,nroOuvidas,duracao,performedBy,writtenBy,produced
     values('m12','Be the Rain',40287,250,'Neil Young', 'Neil Young', 'LA Johnson, Neil Young', 'alb9');
 insert into MUSICA(codm,titulo,nroOuvidas,duracao,performedBy,codalb)
     values('m13','Assitindo "A vaca e o Frango" Com a Salete',4713,204,'Irmão Victor','alb6');
+insert into MUSICA(codm,titulo,nroOuvidas,duracao,performedBy,writtenBy,producedBy,codalb)
+    values('m14','Helena',12195815,206,'My Chemical Romance', 'G. Way, Iero, M. Way, Pelissier, Toro','Howard Benson', 'alb1');
 
 insert into PLAYLIST(codp,nome,descricao)
     values('play1','Cantando com Disney','Cante e divirta-se com as músicas da Disney.');
@@ -234,7 +239,13 @@ insert into PLAYLIST_CONTEUDO(codm,codp)
 insert into PLAYLIST_CONTEUDO(codm,codp)
     values('m5','play9');
 insert into PLAYLIST_CONTEUDO(codm,codp)
-    values('m1','play10');
+    values('m14','play10');
+insert into PLAYLIST_CONTEUDO(codm,codp)
+    values('m8','play10');
+insert into PLAYLIST_CONTEUDO(codm,codp)
+    values('m2','play10');
+insert into PLAYLIST_CONTEUDO(codm,codp)
+    values('m6','play10');
 
 insert into PLAYLISTS_PUBLICAS_U(codu,codp)
     values('einstein','play2');
@@ -334,26 +345,47 @@ insert into CATEGORIA_CONTEUDO(codcat, codp)
     values ('cat2', 'play8');
 
 
-insert into CONCERTO(codcon, dataC, localC)
-    values ('con1', '2017-05-03', 'Saba Atlântida, Atlântida');
-insert into CONCERTO(codcon, dataC, localC)
-    values ('con2', '2016-05-03', 'Citibank, São Paulo');
-insert into CONCERTO(codcon, dataC, localC)
-    values ('con3', '2017-05-03', 'Agulha, Porto Alegre');
-insert into CONCERTO(codcon, dataC, localC)
-    values ('con4', '2018-05-03', 'Parramatta Park, Sydney');
-insert into CONCERTO(codcon, dataC, localC)
-    values ('con5', '2019-05-03', 'Opinião, Porto Alegre');
-insert into CONCERTO(codcon, dataC, localC)
-    values ('con6', '2017-05-03', 'Hollywood Palladium, Hollywood');
-insert into CONCERTO(codcon, dataC, localC)
-    values ('con7', '2018-05-03', 'The joint at Hard Hock Las Vegas, Las Vegas');
-insert into CONCERTO(codcon, dataC, localC)
-    values ('con8', '2015-05-03', 'O2 Arena, Prague');
-insert into CONCERTO(codcon, dataC, localC)
-    values ('con9', '2018-05-03', 'Copenhell, Copenhagen');
-insert into CONCERTO(codcon, dataC, localC)
-    values ('con10', '2019-05-03', 'Opinião, Porto Alegre');
+insert into CONCERTO(codcon, localC)
+    values ('con1', 'Saba Atlântida, Atlântida');
+insert into CONCERTO(codcon, localC)
+    values ('con2', 'Citibank, São Paulo');
+insert into CONCERTO(codcon, localC)
+    values ('con3', 'Agulha, Porto Alegre');
+insert into CONCERTO(codcon, localC)
+    values ('con4', 'Parramatta Park, Sydney');
+insert into CONCERTO(codcon, localC)
+    values ('con5', 'Opinião, Porto Alegre');
+insert into CONCERTO(codcon, localC)
+    values ('con6', 'Hollywood Palladium, Hollywood');
+insert into CONCERTO(codcon, localC)
+    values ('con7', 'The joint at Hard Hock Las Vegas, Las Vegas');
+insert into CONCERTO(codcon, localC)
+    values ('con8', 'O2 Arena, Prague');
+insert into CONCERTO(codcon, localC)
+    values ('con9', 'Copenhell, Copenhagen');
+insert into CONCERTO(codcon, localC)
+    values ('con10', 'Opinião, Porto Alegre');
+
+insert into PARTICIPACOES(codart,codcon, dataC)
+    values ('art001','con1','2019-02-01');
+insert into PARTICIPACOES(codart,codcon, dataC)
+    values ('art002','con1','2019-02-02');
+insert into PARTICIPACOES(codart,codcon, dataC)
+    values ('art003','con1','2019-02-02');
+insert into PARTICIPACOES(codart,codcon, dataC)
+    values ('art004','con1','2019-02-01');
+insert into PARTICIPACOES(codart,codcon, dataC)
+    values ('art005','con1','2019-02-01');
+insert into PARTICIPACOES(codart,codcon, dataC)
+    values ('art006','con1','2019-02-01');
+insert into PARTICIPACOES(codart,codcon, dataC)
+    values ('art007','con1','2019-02-02');
+insert into PARTICIPACOES(codart,codcon, dataC)
+    values ('art008','con3','2018-12-05');
+insert into PARTICIPACOES(codart,codcon, dataC)
+    values ('art009','con1','2018-12-25');
+insert into PARTICIPACOES(codart,codcon, dataC)
+    values ('art0010','con1','2019-10-05');
 
 insert into PROGRAMA(codprog, nome, nomeDono, descricao)
     values ('prog1', 'NerdCast', 'Jovem Nerd', 'O mundo vira piada no Jovem Nerd');
@@ -398,43 +430,24 @@ insert into EPISODIO (codep, titulo, dataPostagem, duracao, codprog, descricao)
 insert into EPISODIO (codep, titulo, dataPostagem, duracao, codprog, descricao)
     values ('e10', 'Empreendedor 47 - EMpreendedor de palo', '2018-11-30', 212400 , 'prog1', 'Neste podcast: Vamos bater um papo sobre o que é empreendedorismo de palco.');
 
+insert into PROGRAMA_SEGUIDO(codUsuario, codProg)
+    values ('einstein', 'prog1');
+insert into PROGRAMA_SEGUIDO(codUsuario, codProg)
+    values ('presidenta', 'prog3');
+insert into PROGRAMA_SEGUIDO(codUsuario, codProg)
+    values ('presidenta', 'prog4');
+insert into PROGRAMA_SEGUIDO(codUsuario, codProg)
+    values ('presidenta', 'prog5');
+insert into PROGRAMA_SEGUIDO(codUsuario, codProg)
+    values ('presidenta', 'prog10');
+insert into PROGRAMA_SEGUIDO(codUsuario, codProg)
+    values ('microphones', 'prog7');
+insert into PROGRAMA_SEGUIDO(codUsuario, codProg)
+    values ('microphones', 'prog8');
+insert into PROGRAMA_SEGUIDO(codUsuario, codProg)
+    values ('microphones', 'prog9');
+insert into PROGRAMA_SEGUIDO(codUsuario, codProg)
+    values ('portuga', 'prog2');
+insert into PROGRAMA_SEGUIDO(codUsuario, codProg)
+    values ('portuga', 'prog1');
 
-insert into PARTICIPACOES(codart,codcon)
-    values ('art001','con1');
-insert into PARTICIPACOES(codart,codcon)
-    values ('art002','con1');
-insert into PARTICIPACOES(codart,codcon)
-    values ('art003','con1');
-insert into PARTICIPACOES(codart,codcon)
-    values ('art004','con1');
-insert into PARTICIPACOES(codart,codcon)
-    values ('art005','con1');
-insert into PARTICIPACOES(codart,codcon)
-    values ('art006','con1');
-insert into PARTICIPACOES(codart,codcon)
-    values ('art007','con1');
-insert into PARTICIPACOES(codart,codcon)
-    values ('art008','con1');
-insert into PARTICIPACOES(codart,codcon)
-    values ('art009','con1');
-insert into PARTICIPACOES(codart,codcon)
-    values ('art0010','con1');
-
--- drop table participacoes;
--- drop table concerto;
--- drop table categoria_conteudo;
--- drop table categoria;
--- drop table biblioteca;
--- drop table playlist_conteudo;
--- drop table playlists_publicas_u;
--- drop table playlist;
--- drop table genero_artista;
--- drop table musica;
--- drop table album;
--- drop table artista;
--- drop table episodio;
--- drop table programa;
--- drop table plano;
--- drop table fatura;
--- drop table usuario;
--- drop table preco_plano;

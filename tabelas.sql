@@ -1,5 +1,5 @@
 ﻿--ftgiv@sharklasers.com cacatua
-
+-- 
 -- drop table participacoes;
 -- drop table concerto;
 -- drop table categoria_conteudo;
@@ -72,6 +72,7 @@ create table PLANO
         on delete set null
         on update cascade
 );
+
 
 create table FATURA
 (
