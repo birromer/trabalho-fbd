@@ -115,19 +115,19 @@ def selecionaUsuariosPagantesAntigos(cursor):
         for linha in linhas:
             print(linha)
 
-def deletaUsuario(plano):
+def deletaUsuario(usuario):
     comando = """
     delete from PLANO
-    where USUARIO = '""" + plano + """';
+    where USUARIO = '""" + usuario + """';
      """
     cursor.execute(comando)
-    linhas = cursor.fetchall()
-
-    if linhas == None:
-        print("Sem resultados")
-    else:
-        for linha in linhas:
-            print(linha)
+    # linhas = cursor.fetchall()
+    #
+    # if linhas == None:
+    #     print("Sem resultados")
+    # else:
+    #     for linha in linhas:
+    #         print(linha)
 
 def exibeUsuarios():
     comando = """
@@ -179,10 +179,11 @@ if __name__ == "__main__":
         elif opcao == "7":
             exibeUsuarios()
         elif opcao == "8":
-            plano = input("Digite o plano: ")
-            deletaUsuario(plano)
+            usuario = input("Digite o usuario: ")
+            deletaUsuario(usuario)
         elif opcao == "9":
             break
         opcao = input("\n\nDigite 's' para encerrar o programa agora.")
         if opcao == "s":
             break
+    cursor.close()
